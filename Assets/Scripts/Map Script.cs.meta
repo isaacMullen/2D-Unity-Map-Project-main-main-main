@@ -3,7 +3,13 @@ guid: 9156cf24e28561a4b91c93e1aacb002f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Tilemap: {instanceID: 0}
+  - Wall: {fileID: 11400000, guid: 852021d2c3e30a74ea7236000ac1774a, type: 2}
+  - Ground: {fileID: 11400000, guid: fead8c94080c7284fb86c045a91a6dde, type: 2}
+  - Player: {fileID: 11400000, guid: a4cdae61e92f1d14490530e299938e7d, type: 2}
+  - Chest: {fileID: 11400000, guid: 1391d6f56eb856c4ea17603fd8ff0a9c, type: 2}
+  - Door: {fileID: 11400000, guid: 3a0938563e5e0a4438387d1c42f4b324, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

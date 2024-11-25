@@ -5,8 +5,10 @@ using UnityEngine.Tilemaps;
 public class PlayerControls : MonoBehaviour
 {
     public Tilemap tilemap;
+    public TileBase player;
     public Vector3Int currentTile;
     public float moveSpeed = 1.0f;
+    public GameObject PlayerTile;
 
     private Vector3Int newTile;
     private Vector3 target;
@@ -14,7 +16,7 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         currentTile = tilemap.WorldToCell(transform.position);
-        target = position.transform;
+        target = transform.position;
     }
 
     void Update()
@@ -43,6 +45,8 @@ public class PlayerControls : MonoBehaviour
         {
             newTile = currentTile + new Vector3Int(-1, 0, 0);
         }
+        
+
    
         
         
@@ -50,11 +54,11 @@ public class PlayerControls : MonoBehaviour
 
     void MovePlayer()
     {
-        transform.position = Vector3MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         
         if(transform.position == target)
         {
-            currentTile - newTile;
+            Vector3 difference = currentTile - newTile;
         }
     
     }
@@ -72,7 +76,20 @@ public class PlayerControls : MonoBehaviour
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
+            
+        
         }
+        else
+        {
+            return true;
+        }
+    
+    
+    
     }
 
 
