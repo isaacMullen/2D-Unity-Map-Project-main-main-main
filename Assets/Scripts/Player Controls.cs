@@ -28,6 +28,7 @@ public class PlayerControls : MonoBehaviour
     //Method for moving the player on the map.
     void HandleInput()
     {
+        Vector3Int direction = Vector3Int.zero;
         //Keycodes for the four different WASD directions.
         if(Input.GetKeyDown(KeyCode.W))
         {
@@ -45,11 +46,16 @@ public class PlayerControls : MonoBehaviour
         {
             newTile = currentTile + new Vector3Int(-1, 0, 0);
         }
-        
-
-   
-        
-        
+       
+        if (direction != Vector3Int.zero)
+        {
+            newTile = currentTile + direction;
+            
+            if (IsTileWalkable(newTile)) 
+            {
+                target = tilemap.CellToWorld(newTile);
+            }
+        }
     }
 
     void MovePlayer()
@@ -80,8 +86,7 @@ public class PlayerControls : MonoBehaviour
             {
                 return true;
             }
-            
-        
+           
         }
         else
         {
