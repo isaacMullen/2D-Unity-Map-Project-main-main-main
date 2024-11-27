@@ -76,7 +76,7 @@ public class MapScript : MonoBehaviour
                 {
                     Map[x, y] = chest;
                 }
-                //Conditional statement that always draws the character to a specific point on the map. 
+                
                
 
             }
