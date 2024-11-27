@@ -5,6 +5,7 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
+    public TextMeshProUGUI textmeshpro;
     public int health;
     public string healthStatus;
    

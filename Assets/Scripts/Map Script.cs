@@ -15,6 +15,7 @@ public class MapScript : MonoBehaviour
     public TileBase Player;
     public TileBase Chest;
     public TileBase Door;
+    public TileBase Enemy;
     string pathToMyFile = $"{Application.dataPath}/TextFiles/PreMadeMap.txt";
     Vector3Int Cellposition;
 
@@ -37,7 +38,6 @@ public class MapScript : MonoBehaviour
         Map = new char[width, height];
         ConvertToTileMap(LoadPremadeMap(pathToMyFile));
        
-        
     }
 
     //The method for generating the string of the map.
