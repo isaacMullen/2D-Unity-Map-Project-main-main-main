@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - tilemap: {instanceID: 0}
+  - player: {fileID: 11400000, guid: a4cdae61e92f1d14490530e299938e7d, type: 2}
   - PlayerTile: {fileID: 8549078879649068676, guid: 966f8cb46051b4b43a83cc634a478749, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
