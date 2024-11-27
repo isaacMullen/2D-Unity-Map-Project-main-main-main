@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     //Public textmeshpro for displaying the health, health status and lives.
     public TextMeshProUGUI textmeshpro;
     //Public variables for the health and lives, which is declared on the variable.
-    public int health;
+    public int health = 100;
     public int lives = 2;
     //Public string for writing the health status of the player.
     public string healthStatus;
@@ -36,6 +36,7 @@ public class Health : MonoBehaviour
     //Method for the health status that lets the player know how badly they are injured depending on the range of their health.
     public string HealthStatus(int hp)
     {
+        //If statements that return different hea;th statuses depending on the range of the player's health.
         if (hp <= 100 && hp > 90)
         {
             return "Perfect Health";
