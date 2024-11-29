@@ -13,7 +13,7 @@ public class PlayerControls : MonoBehaviour
     private Vector3Int newTile;
     private Vector3 target;
    
-    void Start()
+    void Awake()
     {
         currentTile = tilemap.WorldToCell(transform.position);
         target = transform.position;
@@ -22,7 +22,11 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         HandleInput();
-        MovePlayer();
+        if (IsTileWalkable(newTile))
+        {
+            MovePlayer();
+        }
+            
     }
 
     //Method for moving the player on the map.
@@ -46,37 +50,51 @@ public class PlayerControls : MonoBehaviour
         {
             newTile = currentTile + new Vector3Int(-1, 0, 0);
         }
-       
-       
-            
-        if (IsTileWalkable(newTile)) 
-        {
-           target = tilemap.CellToWorld(newTile);
+        else 
+        { 
+            newTile = currentTile;
         }
-        
+
+        target = tilemap.CellToWorld(newTile);
+
+
     }
 
     void MovePlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
-        
-        if(Vector3.Distance(transform.position, target) < 0.1f)
+        if (IsTileWalkable(newTile))
         {
+            transform.position = newTile;
+
             currentTile = newTile;
         }
-    
+
+      
     }
+
+    void PlayerAttack(Vector3Int tilePosition)
+    {
+        
+    }
+
     //Bool that returns if a tile can be walked on or not with a true or false.
     bool IsTileWalkable(Vector3Int tilePosition)
     {
         TileBase tile = tilemap.GetTile(tilePosition);
+        Debug.Log(tile.name);
 
         if(tile != null)
         {
+            //Combat Check
+            if(tile.tileposition == enemyposition)
+            {
+                PlayerAttack(tilePosition);
+                return false;
+            }
 
             string tileName = tile.name;
            //If statement for tiles that I don't want the player to walk on.
-            if(tileName == "Wall" || tileName == "Chest" || tileName == "Door")
+            if(tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile")
             {
                 return false;
             }
@@ -88,7 +106,7 @@ public class PlayerControls : MonoBehaviour
         }
         else
         {
-            return true;
+            return false;
         }
     
     
