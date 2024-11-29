@@ -13,7 +13,7 @@ public class PlayerControls : MonoBehaviour
     private Vector3Int newTile;
     private Vector3 target;
    
-    void Awake()
+    void Start()
     {
         currentTile = tilemap.WorldToCell(transform.position);
         target = transform.position;
@@ -60,6 +60,7 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    //Method for moving the player if tile is 
     void MovePlayer()
     {
         if (IsTileWalkable(newTile))
@@ -72,6 +73,7 @@ public class PlayerControls : MonoBehaviour
       
     }
 
+    //Method for calling the attack from the player.
     void PlayerAttack(Vector3Int tilePosition)
     {
         
@@ -81,16 +83,16 @@ public class PlayerControls : MonoBehaviour
     bool IsTileWalkable(Vector3Int tilePosition)
     {
         TileBase tile = tilemap.GetTile(tilePosition);
-        Debug.Log(tile.name);
+        
 
         if(tile != null)
         {
             //Combat Check
-            if(tile.tileposition == enemyposition)
-            {
-                PlayerAttack(tilePosition);
-                return false;
-            }
+            //if (tile.tileposition == enemyposition)
+            //{
+            //    PlayerAttack(tilePosition);
+            //    return false;
+            //}
 
             string tileName = tile.name;
            //If statement for tiles that I don't want the player to walk on.
