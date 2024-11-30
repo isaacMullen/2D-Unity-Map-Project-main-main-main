@@ -10,6 +10,7 @@ MonoImporter:
   - Player: {fileID: 11400000, guid: a4cdae61e92f1d14490530e299938e7d, type: 2}
   - Chest: {fileID: 11400000, guid: 1391d6f56eb856c4ea17603fd8ff0a9c, type: 2}
   - Door: {fileID: 11400000, guid: 3a0938563e5e0a4438387d1c42f4b324, type: 2}
+  - Enemy: {fileID: 11400000, guid: 354acfa17351b6d4e97006efb5634c37, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

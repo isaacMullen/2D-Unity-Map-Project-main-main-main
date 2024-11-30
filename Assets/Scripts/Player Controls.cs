@@ -5,16 +5,20 @@ using UnityEngine.Tilemaps;
 public class PlayerControls : MonoBehaviour
 {
     public Tilemap tilemap;
-    public TileBase player;
+    
     public Vector3Int currentTile;
     public float moveSpeed = 1.0f;
     public GameObject PlayerTile;
+  
 
     private Vector3Int newTile;
     private Vector3 target;
-   
+
+
+
     void Start()
     {
+        
         currentTile = tilemap.WorldToCell(transform.position);
         target = transform.position;
     }

@@ -7,17 +7,30 @@ public class Health : MonoBehaviour
 {
     //Public textmeshpro for displaying the health, health status and lives.
     public TextMeshProUGUI textmeshpro;
-    //Public variables for the health and lives, which is declared on the variable.
+    //Public variables for setting the values of the health and lives, which is declared on the variable.
     public int health = 100;
-    public int lives = 2;
+    public int lives = 3;
     //Public string for writing the health status of the player.
     public string healthStatus;
-   
+
+    public static Health instance;
+
+    
+    
+    public void Awake()
+    {
+        textmeshpro = GetComponent<TextMeshProUGUI>();
+        ShowHUD();
+        instance = this;
+    }
+
     //Method that prints the health, health status and number of lives the player has into the game.
     public string ShowHUD()
     {
         healthStatus = HealthStatus(health);
-        return $"Health: {health}" + $"Lives: {lives}" + $"Health Status: {healthStatus}";
+        textmeshpro.text = $"Health: {health} " + $"Lives: {lives} " + $"Health Status: {healthStatus}";
+        instance = this;
+        return textmeshpro.text;
     }
 
     //Method for player taking damage.
@@ -80,7 +93,7 @@ public class Health : MonoBehaviour
     public void ResetGame()
     {
         health = 100;
-        lives = 2;
+        lives = 3;
     }
 
 
