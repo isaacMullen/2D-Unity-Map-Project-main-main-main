@@ -88,7 +88,7 @@ public class PlayerControls : MonoBehaviour
     {
         TileBase tile = tilemap.GetTile(tilePosition);
 
-        Debug.Log(tile);
+        //Debug.Log(tile);
         if(tile != null)
         {
             //Combat Check

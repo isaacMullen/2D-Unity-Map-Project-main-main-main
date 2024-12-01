@@ -15,12 +15,11 @@ public class Health : MonoBehaviour
 
     
 
-    
-    
     public void Awake()
     {
         textmeshpro = GetComponent<TextMeshProUGUI>();
-        ShowHUD();
+        
+        textmeshpro.text = ShowHUD();
         
     }
 
@@ -50,7 +49,7 @@ public class Health : MonoBehaviour
     //Method for the health status that lets the player know how badly they are injured depending on the range of their health.
     public string HealthStatus(int hp)
     {
-        //If statements that return different hea;th statuses depending on the range of the player's health.
+        //If statements that return different health statuses depending on the range of the player's health.
         if (hp <= 100 && hp > 90)
         {
             return "Perfect Health";
