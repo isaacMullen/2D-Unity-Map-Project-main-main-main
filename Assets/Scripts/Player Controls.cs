@@ -87,8 +87,8 @@ public class PlayerControls : MonoBehaviour
     bool IsTileWalkable(Vector3Int tilePosition)
     {
         TileBase tile = tilemap.GetTile(tilePosition);
-        
 
+        Debug.Log(tile);
         if(tile != null)
         {
             //Combat Check
@@ -100,7 +100,7 @@ public class PlayerControls : MonoBehaviour
 
             string tileName = tile.name;
            //If statement for tiles that I don't want the player to walk on.
-            if(tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile")
+            if(tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile" || tileName == "Enemy Tile")
             {
                 return false;
             }

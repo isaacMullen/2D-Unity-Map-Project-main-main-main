@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     //Public string for writing the health status of the player.
     public string healthStatus;
 
-    public static Health instance;
+    
 
     
     
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
     {
         textmeshpro = GetComponent<TextMeshProUGUI>();
         ShowHUD();
-        instance = this;
+        
     }
 
     //Method that prints the health, health status and number of lives the player has into the game.
@@ -29,8 +29,9 @@ public class Health : MonoBehaviour
     {
         healthStatus = HealthStatus(health);
         textmeshpro.text = $"Health: {health} " + $"Lives: {lives} " + $"Health Status: {healthStatus}";
-        instance = this;
+        
         return textmeshpro.text;
+        
     }
 
     //Method for player taking damage.
