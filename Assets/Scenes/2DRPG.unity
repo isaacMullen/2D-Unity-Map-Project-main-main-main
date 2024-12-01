@@ -941,6 +941,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b44e3b33fd5984c8d1001e5048fddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 1525836386}
+  PlayerTile: {fileID: 1411938293}
+  EnemyhasMoved: 0
 --- !u!1 &929177098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1215,7 @@ GameObject:
   - component: {fileID: 1411938295}
   m_Layer: 0
   m_Name: PlayerTile
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1300,6 +1303,8 @@ MonoBehaviour:
   currentTile: {x: 1, y: 1, z: 0}
   moveSpeed: 1
   PlayerTile: {fileID: 1411938291}
+  IsplayersTurn: 1
+  enemyscript: {fileID: 896126559}
 --- !u!114 &1411938295
 MonoBehaviour:
   m_ObjectHideFlags: 0

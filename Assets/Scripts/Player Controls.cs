@@ -9,18 +9,21 @@ public class PlayerControls : MonoBehaviour
     public Vector3Int currentTile;
     public float moveSpeed = 1.0f;
     public GameObject PlayerTile;
-  
+    public bool IsplayersTurn = true;
+    public bool HasMoved = false;
+    public EnemyScript enemyscript;
 
     private Vector3Int newTile;
     private Vector3 target;
 
-
+    Health healthSystem = new Health();
 
     void Start()
     {
-        
+        enemyscript = GameObject.FindWithTag("Enemy").GetComponent<EnemyScript>();
         currentTile = tilemap.WorldToCell(transform.position);
         target = transform.position;
+
     }
 
     void Update()
@@ -29,6 +32,11 @@ public class PlayerControls : MonoBehaviour
         if (IsTileWalkable(newTile))
         {
             MovePlayer();
+            
+        }
+        if (HasMoved)
+        {
+            StartEnemyTurn();
         }
             
     }
@@ -41,18 +49,22 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         {
             newTile = currentTile + new Vector3Int(0, 1, 0);
+            HasMoved = true;
         }
         else if(Input.GetKeyDown(KeyCode.S))
         {
             newTile = currentTile + new Vector3Int(0, -1, 0);
+            HasMoved = true;
         }
         else if(Input.GetKeyDown(KeyCode.D))
         {
             newTile = currentTile + new Vector3Int(1, 0, 0);
+            HasMoved = true;
         }
         else if(Input.GetKeyDown(KeyCode.A))
         {
             newTile = currentTile + new Vector3Int(-1, 0, 0);
+            HasMoved = true;
         }
         else 
         { 
@@ -61,20 +73,28 @@ public class PlayerControls : MonoBehaviour
 
         target = tilemap.CellToWorld(newTile);
 
-
+        
     }
 
-    //Method for moving the player if tile is 
+    //Method for moving the player if tile is walkable.
     void MovePlayer()
     {
-        if (IsTileWalkable(newTile))
+        //If statement that allows the player
+        if (IsTileWalkable(newTile) && IsplayersTurn)
         {
             transform.position = newTile;
 
-            currentTile = newTile;
+            currentTile = newTile; 
+        
         }
+ 
+    }
 
-      
+    void StartEnemyTurn()
+    {
+        IsplayersTurn = false;
+
+        enemyscript.HasMoved = false;
     }
 
     //Method for calling the attack from the player.

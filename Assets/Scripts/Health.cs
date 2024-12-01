@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Health : MonoBehaviour
+public class Health
 {
     //Public textmeshpro for displaying the health, health status and lives.
     public TextMeshProUGUI textmeshpro;
@@ -13,15 +13,15 @@ public class Health : MonoBehaviour
     //Public string for writing the health status of the player.
     public string healthStatus;
 
-    
 
-    public void Awake()
-    {
-        textmeshpro = GetComponent<TextMeshProUGUI>();
-        
-        textmeshpro.text = ShowHUD();
-        
-    }
+
+    //public void Awake()
+    //{
+    //    // textmeshpro = GetComponent<TextMeshProUGUI>();
+
+    //    textmeshpro.text = ShowHUD();
+
+    //}
 
     //Method that prints the health, health status and number of lives the player has into the game.
     public string ShowHUD()
