@@ -20,5 +20,8 @@ public class Menus : MonoBehaviour
         SceneManager.LoadScene("Controls Screen");
     }
 
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

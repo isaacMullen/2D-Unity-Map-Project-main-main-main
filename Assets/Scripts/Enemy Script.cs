@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class EnemyScript : MonoBehaviour
 {
     //Health system instance that gives the Enemy its own health system.
-    Health healthSystem = new Health();
+    
     public Tilemap tilemap;
     //Variable for the Player Tile.
     public Transform PlayerTile;
@@ -84,6 +84,7 @@ public class EnemyScript : MonoBehaviour
             //    return false;
             //}
 
+            //A string for making tileName equal the name of the tiles.
             string tileName = tile.name;
             //If statement for tiles that I don't want the player to walk on.
             if (tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile" || tileName == "PlayerTile")

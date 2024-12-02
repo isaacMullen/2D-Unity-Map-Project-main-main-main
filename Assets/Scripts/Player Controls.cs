@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 public class PlayerControls : MonoBehaviour
 {
+    //Public Tilemap variable for declaring the tilemap.
     public Tilemap tilemap;
-    
+    //Vector3Int foe the currenttile.
     public Vector3Int currentTile;
+    //Float Move speed of the player.
     public float moveSpeed = 1.0f;
+    //Public game tile for the player.
     public GameObject PlayerTile;
+    //Public bools used for checking if the player of enemy has moved.
     public bool IsplayersTurn = true;
     public bool HasMoved = false;
+    //Public variable for calling from the enemyscript.
     public EnemyScript enemyscript;
-
+    //Private Vectors for the target position and new tile positions.
     private Vector3Int newTile;
     private Vector3 target;
 
-    Health healthSystem = new Health();
+    
 
     void Start()
     {
@@ -26,16 +32,22 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    
     void Update()
     {
+        //Calling the input method.
         HandleInput();
+        //If statement for if the tile you move to is walkable.
         if (IsTileWalkable(newTile))
         {
+            //Calling move player method.
             MovePlayer();
             
         }
+        //If statement for the player moving.
         if (HasMoved)
         {
+            //Calling this method to start the enemy's turn.
             StartEnemyTurn();
         }
             
@@ -89,7 +101,8 @@ public class PlayerControls : MonoBehaviour
         }
  
     }
-
+    
+    //Method for enemy starting their turn.
     void StartEnemyTurn()
     {
         IsplayersTurn = false;
@@ -108,16 +121,19 @@ public class PlayerControls : MonoBehaviour
     {
         TileBase tile = tilemap.GetTile(tilePosition);
 
-        //Debug.Log(tile);
+        
         if(tile != null)
         {
-            //Combat Check
-            //if (tile.tileposition == enemyposition)
+            //Combat check for player to attack an enemy.
+            
+            //tile. before tilePosition.
+            //if (tilePosition == enemyPosition)
             //{
             //    PlayerAttack(tilePosition);
             //    return false;
             //}
 
+            //
             string tileName = tile.name;
            //If statement for tiles that I don't want the player to walk on.
             if(tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile" || tileName == "Enemy Tile")

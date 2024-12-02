@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Health
+public class Health : MonoBehaviour
 {
+    public GameObject Player;
     //Public textmeshpro for displaying the health, health status and lives.
     public TextMeshProUGUI textmeshpro;
     //Public variables for setting the values of the health and lives, which is declared on the variable.
     public int health = 100;
     public int lives = 3;
+    //Private integer for how much damage the player can take.
+    private int damage = 20;
     //Public string for writing the health status of the player.
     public string healthStatus;
 
 
 
-    //public void Awake()
-    //{
-    //    // textmeshpro = GetComponent<TextMeshProUGUI>();
+    public void Start()
+    {
+        textmeshpro = GetComponent<TextMeshProUGUI>();
 
-    //    textmeshpro.text = ShowHUD();
+        textmeshpro.text = ShowHUD();
 
-    //}
+
+    }
 
     //Method that prints the health, health status and number of lives the player has into the game.
     public string ShowHUD()
@@ -34,13 +38,15 @@ public class Health
     }
 
     //Method for player taking damage.
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
+        //Changes health to health minus damage taken.
         health = health - damage;
         //If statement for player health reaching zero, makes sure health doesn't go into the negatives
         //and resets their stats with the revive method.
         if(health <= 0)
         {
+            //Makes sure health is zero and calls the revive method to revive the player.
             health = 0;
             Revive();
         }
@@ -49,7 +55,7 @@ public class Health
     //Method for the health status that lets the player know how badly they are injured depending on the range of their health.
     public string HealthStatus(int hp)
     {
-        //If statements that return different health statuses depending on the range of the player's health.
+        //If statements that return different health statuses depending on how high or low the player's health is.
         if (hp <= 100 && hp > 90)
         {
             return "Perfect Health";
@@ -79,23 +85,18 @@ public class Health
     //Method for reviving the player after they lose a life, resets health to 100.
     public void Revive()
     {
+        //Takes away one life after death and resets the health to 100.
         lives = lives - 1;
         health = 100;
 
-        //Resets game if player has no more lives.
+        
         if(lives <= 0)
         {
-            ResetGame();
+            Player.SetActive(false); 
         }
     }
 
-    //Resets the health and lives values after the player dies.
-    public void ResetGame()
-    {
-        health = 100;
-        lives = 3;
-    }
-
+   
 
 
 }

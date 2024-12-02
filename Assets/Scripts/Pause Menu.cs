@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -44,7 +45,15 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
 
+    public void ResetGame()
+    {
+        SceneManager.LoadScene("2DRPG");
+    }
 
     public void QuitGame()
     {
