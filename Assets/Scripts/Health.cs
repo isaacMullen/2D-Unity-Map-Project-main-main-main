@@ -6,6 +6,7 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject LosetextObject;
     //Public textmeshpro for displaying the health, health status and lives.
     public TextMeshProUGUI textmeshpro;
     //Public variables for setting the values of the health and lives, which is declared on the variable.
@@ -92,7 +93,8 @@ public class Health : MonoBehaviour
         
         if(lives <= 0)
         {
-            Player.SetActive(false); 
+            Player.SetActive(false);
+            LosetextObject.SetActive(true);
         }
     }
 
