@@ -8,8 +8,19 @@ public class EnemyScript : MonoBehaviour
     //Health system instance that gives the Enemy its own health system.
     
     public Tilemap tilemap;
+
+    public GameObject Enemy;
+    public GameObject WinTextObject;
+
+    public TextMeshProUGUI textmeshpro;
+
+    public int enemyHealth = 100
+
+    public string EnemyHealthStatus;
     //Variable for the Player Tile.
     public Transform PlayerTile;
+
+
     //Public bool for checking if the Enemy has moved.
     public bool HasMoved = true;
     
