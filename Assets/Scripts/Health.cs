@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
     public void Start()
     {
+        //Fix with if statements
         textmeshpro = GetComponent<TextMeshProUGUI>();
 
         textmeshpro.text = ShowHUD();
