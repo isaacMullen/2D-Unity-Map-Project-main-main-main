@@ -1523,8 +1523,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b44e3b33fd5984c8d1001e5048fddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerControls: {fileID: 1411938294}
   tilemap: {fileID: 1525836386}
+  Enemy: {fileID: 0}
+  WinTextObject: {fileID: 0}
+  healthText: {fileID: 384292224}
+  Health: 100
+  healthStatus: 
   PlayerTile: {fileID: 1411938293}
+  enemyPos: {x: 0, y: 0, z: 0}
   HasMoved: 1
 --- !u!1 &929177098
 GameObject:
@@ -2069,6 +2076,7 @@ MonoBehaviour:
   IsplayersTurn: 1
   HasMoved: 0
   enemyscript: {fileID: 896126559}
+  health: 100
 --- !u!1 &1525836383
 GameObject:
   m_ObjectHideFlags: 0

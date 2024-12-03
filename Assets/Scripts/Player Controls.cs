@@ -22,21 +22,20 @@ public class PlayerControls : MonoBehaviour
     private Vector3Int newTile;
     private Vector3 target;
 
-    
+    public int health;
 
     void Start()
     {
         enemyscript = GameObject.FindWithTag("Enemy").GetComponent<EnemyScript>();
         currentTile = tilemap.WorldToCell(transform.position);
         target = transform.position;
-
     }
-
     
     void Update()
-    {
+    {                
         //Calling the input method.
         HandleInput();
+
         //If statement for if the tile you move to is walkable.
         if (IsTileWalkable(newTile))
         {
@@ -49,31 +48,29 @@ public class PlayerControls : MonoBehaviour
         {
             //Calling this method to start the enemy's turn.
             StartEnemyTurn();
-        }
-            
+        }            
     }
 
     //Method for moving the player on the map.
     void HandleInput()
-    {
-        
+    {        
         //Keycodes for the four different WASD directions.
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) && !HasMoved)
         {
             newTile = currentTile + new Vector3Int(0, 1, 0);
             HasMoved = true;
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.S) && !HasMoved)
         {
             newTile = currentTile + new Vector3Int(0, -1, 0);
             HasMoved = true;
         }
-        else if(Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKeyDown(KeyCode.D) && !HasMoved)
         {
             newTile = currentTile + new Vector3Int(1, 0, 0);
             HasMoved = true;
         }
-        else if(Input.GetKeyDown(KeyCode.A))
+        else if(Input.GetKeyDown(KeyCode.A) && !HasMoved)
         {
             newTile = currentTile + new Vector3Int(-1, 0, 0);
             HasMoved = true;
@@ -82,10 +79,9 @@ public class PlayerControls : MonoBehaviour
         { 
             newTile = currentTile;
         }
-
-        target = tilemap.CellToWorld(newTile);
-
         
+        target = tilemap.CellToWorld(newTile);
+        HasMoved = false;        
     }
 
     //Method for moving the player if tile is walkable.
@@ -98,8 +94,7 @@ public class PlayerControls : MonoBehaviour
 
             currentTile = newTile; 
         
-        }
- 
+        } 
     }
     
     //Method for enemy starting their turn.
@@ -120,7 +115,6 @@ public class PlayerControls : MonoBehaviour
     bool IsTileWalkable(Vector3Int tilePosition)
     {
         TileBase tile = tilemap.GetTile(tilePosition);
-
         
         if(tile != null)
         {
@@ -135,7 +129,8 @@ public class PlayerControls : MonoBehaviour
 
             //
             string tileName = tile.name;
-           //If statement for tiles that I don't want the player to walk on.
+            
+            //If statement for tiles that I don't want the player to walk on.
             if(tileName == "Wall Tile" || tileName == "Chest Tile" || tileName == "DoorTile" || tileName == "Enemy Tile")
             {
                 return false;
@@ -143,17 +138,11 @@ public class PlayerControls : MonoBehaviour
             else
             {
                 return true;
-            }
-           
+            }           
         }
         else
         {
             return false;
-        }
-    
-    
-    
+        }            
     }
-
-
 }
