@@ -57,16 +57,30 @@ public class Health : MonoBehaviour
     //Method for player taking damage.
     public void TakeDamage()
     {
-        //Changes health to health minus damage taken.
-        health = health - damage;
-        //If statement for player health reaching zero, makes sure health doesn't go into the negatives
-        //and resets their stats with the revive method.
-        if(health <= 0)
+        
+        if(damage < 0)
         {
-            //Makes sure health is zero and calls the revive method to revive the player.
-            health = 0;
+            Debug.LogWarning("Damage can't be negative");
+            return;
+        }
+
+        if (health <= 0)
+        {
+            Debug.LogWarning("Player is dead, no more damage can be taken");
+            return;
+        }
+
+        //If statement for player health reaching zero.
+        if (health == 0)
+        {
+            //Calls revive method
             Revive();
         }
+
+        //Changes health to health minus damage taken.
+        health -= damage;
+
+
     }
 
     //Method for the health status that lets the player know how badly they are injured depending on the range of their health.
@@ -107,7 +121,7 @@ public class Health : MonoBehaviour
         health = 100;
 
         
-        if(lives <= 0)
+        if(lives == 0)
         {
             Player.SetActive(false);
             LosetextObject.SetActive(true);
